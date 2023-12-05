@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ZX.Template.WPFBlazor</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <description>WPF-Blazor</description>
     <authors>ZX</authors>
     <packageTypes>
@@ -12,7 +12,7 @@
     <license type="expression">MIT</license>
   </metadata>
     <files>
-      <file src="src\**\*" target="ZX.Template\" exclude="src\**\bin\**;src\**\obj\**;.*\**;src\.vs\**" />
+      <file src="src\**\*" target="content\src\" exclude="src\**\bin\**;src\**\obj\**;.*\**;src\.vs\**" />
       <file src="icon.png"/>
     </files>
 </package>
