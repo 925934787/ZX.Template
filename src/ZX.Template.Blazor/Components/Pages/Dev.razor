@@ -1,0 +1,47 @@
+﻿@page "/dev"
+@inject ISystemService _systemService
+@inject IMessageService _message
+
+<Space Size=@(("8", "16")) Wrap>
+    <SpaceItem>
+        <Button OnClick="UpdateDb">更新数据库</Button>
+    </SpaceItem>
+
+    <SpaceItem>
+        <Button OnClick="GetTable">获取数据库表</Button>
+    </SpaceItem>
+</Space>
+
+
+@foreach (var table in Tables)
+{
+    <Tag>@table</Tag>
+}
+
+
+@code {
+    private List<string> Tables { get; set; } = new();
+
+    private void UpdateDb()
+    {
+        try
+        {
+            _systemService.CodeFirst();
+        }
+        catch (Exception ex)
+        {
+
+            _message.Error("更新数据库失败：" + ex.Message);
+        }
+
+
+        _message.Success("更新数据库成功");
+
+    }
+
+    private void GetTable()
+    {
+        Tables= _systemService.GetTable();
+    }
+
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ZX.Template.WPFBlazor</id>
+    <version>1.0.1</version>
+    <description>WPF-Blazor</description>
+    <authors>ZX</authors>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+    <icon>icon.png</icon>
+    <license type="expression">MIT</license>
+  </metadata>
+    <files>
+      <file src="src\**\*" target="ZX.Template\" exclude="src\**\bin\**;src\**\obj\**;.*\**;src\.vs\**" />
+      <file src="icon.png"/>
+    </files>
+</package>

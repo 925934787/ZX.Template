@@ -1,0 +1,89 @@
+﻿@page "/dev"
+@attribute [ReuseTabsPageTitle("开发")]
+@using System.Data
+@inject ISystemService _systemService
+@inject IMessageService _message
+
+<Card>
+    <Space Size=@(("8", "16")) Wrap>
+        <SpaceItem>
+            <Button OnClick="UpdateDb">更新数据库</Button>
+        </SpaceItem>
+
+        <SpaceItem>
+            <Button OnClick="GetTable">获取数据库表数据</Button>
+        </SpaceItem>
+
+        <SpaceItem>
+            <Button OnClick="Publish">发布测试</Button>
+        </SpaceItem>
+    </Space>
+</Card>
+
+<Tabs ActiveKey="1" Animated>
+    @if (TableDatas.Count == 0)
+    {
+        <TabPane Key="1" Tab="无数据">
+            无数据
+        </TabPane>
+    }
+    else
+    {
+        var index = 0;
+        @foreach (var datas in TableDatas)
+        {
+            var table = datas.Value;
+            DataRow[] data = table?.AsEnumerable().ToArray();
+            <TabPane Key="@((index++).ToString())" Tab="@datas.Key">
+
+                <Table DataSource="@data">
+                    @foreach (DataColumn column in table.Columns)
+                    {
+                        <PropertyColumn Property="c=>c[column.ColumnName]" Title="@column.ColumnName"></PropertyColumn>
+                    }
+                </Table>
+            </TabPane>
+        }
+    }
+</Tabs>
+
+
+
+
+
+
+@code {
+    private List<string> Tables { get; set; } = new();
+
+
+    private Dictionary<string, DataTable> TableDatas { get; set; } = new();
+
+    private async Task Publish()
+    {
+        await _systemService.Publish();
+        await _message.Success("发布成功");
+    }
+
+    private void UpdateDb()
+    {
+        try
+        {
+            _systemService.CodeFirst();
+        }
+        catch (Exception ex)
+        {
+
+            _message.Error("更新数据库失败：" + ex.Message);
+        }
+
+
+        _message.Success("更新数据库成功");
+
+    }
+
+    private async Task GetTable()
+    {
+        TableDatas = await _systemService.GetTableData();
+    }
+
+}

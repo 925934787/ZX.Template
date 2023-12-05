@@ -1,0 +1,26 @@
+﻿
+@namespace ZX.Template.Blazor.Components
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link href="_content/AntDesign/css/ant-design-blazor.css" rel="stylesheet" />
+    <link href="_content/AntDesign.ProLayout/css/ant-design-pro-layout-blazor.css" rel="stylesheet" />
+    <link href="_content/ZX.Template.Blazor.Shared/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ZX.Template.Blazor.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet @rendermode="@InteractiveServer" />
+</head>
+
+<body>
+    <Routes @rendermode="@InteractiveServer" />
+
+    <script src="_framework/blazor.web.js"></script>
+    <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
+</body>
+
+</html>

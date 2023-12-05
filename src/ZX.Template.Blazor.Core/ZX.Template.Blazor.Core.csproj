@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AntDesign.ProLayout" Version="0.16.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ZX.Template.ApplicationService\ZX.Template.ApplicationService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

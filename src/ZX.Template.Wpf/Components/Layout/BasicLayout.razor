@@ -1,0 +1,29 @@
+﻿@inherits LayoutComponentBase
+@inject ISystemService _systemService
+
+<AntDesign.ProLayout.BasicLayout Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+                                 MenuData="MenuData">
+    <RightContentRender>
+    </RightContentRender>
+    <ChildContent>
+
+        <ReuseTabs Class="top-row px-4" TabPaneClass="content px-4" />
+
+        @* @Body *@
+    </ChildContent>
+    <FooterRender>
+        <FooterView Copyright="2023 Ant Design Blazor"></FooterView>
+    </FooterRender>
+</AntDesign.ProLayout.BasicLayout>
+<SettingDrawer />
+
+@code
+{
+    private MenuDataItem[] MenuData { get; set; } = (new List<MenuDataItem>()).ToArray();
+
+    protected override async Task OnInitializedAsync()
+    {
+        MenuData = _systemService.GetIconSideMenuItems().ToArray();
+    }
+
+}
