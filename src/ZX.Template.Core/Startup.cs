@@ -21,6 +21,7 @@ namespace ZX.Template.Core
 
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(LifetimeRegistrar.GetAssemblies().ToArray()));
+
         }
 
 
